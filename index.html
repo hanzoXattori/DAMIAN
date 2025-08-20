@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>DAMIAN | Radmir GTA 5 RP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Шрифты для неформального и рукописного стиля -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #121212;
+            color: #f3f3f3;
+            margin: 0;
+            font-family: 'VT323', monospace, Arial, sans-serif;
+            min-height: 100vh;
+        }
+        header {
+            position: relative;
+            text-align: center;
+            background: #181818;
+            padding: 2rem 0 1rem 0;
+            border-bottom: 3px solid #fff;
+        }
+        .goth-cross {
+            position: absolute;
+            width: 48px;
+            height: 64px;
+            opacity: 0.18;
+        }
+        .goth-cross.left { top: 8px; left: 3vw; }
+        .goth-cross.right { top: 8px; right: 3vw; }
+        h1 {
+            font-family: 'Permanent Marker', cursive, monospace;
+            font-size: 3.5rem;
+            letter-spacing: 10px;
+            color: #fff;
+            text-shadow: 0 2px 6px #000, 0 0 1px #fff;
+            margin: 0 0 0.5rem 0;
+            text-transform: uppercase;
+            user-select: none;
+        }
+        nav {
+            margin-top: 0.6rem;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1.3rem;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            font-family: 'VT323', monospace;
+            padding: 2px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        nav a:hover, nav a.active {
+            border-bottom: 2px solid #fff;
+            color: #ce0000;
+        }
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(18,18,18,0.97);
+            border-radius: 12px;
+            padding: 2.2rem 1.5rem;
+            box-shadow: 0 2px 32px #000b;
+            border: 2px dashed #fff2;
+            position: relative;
+        }
+        h2 {
+            font-family: 'Permanent Marker', cursive, monospace;
+            font-size: 2.1rem;
+            text-transform: uppercase;
+            color: #ce0000;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+        }
+        .handwritten {
+            font-family: 'Permanent Marker', cursive;
+        }
+        p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            letter-spacing: 1.2px;
+            margin-bottom: 1.4rem;
+        }
+        .goth-cross-big {
+            display: block;
+            margin: 2.5rem auto 1.5rem auto;
+            width: 110px;
+            height: 140px;
+            opacity: 0.22;
+        }
+        .join-btn {
+            display: inline-block;
+            background: #fff;
+            color: #111;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 5px;
+            padding: 0.7rem 2.2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 7px #000a;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, transform 0.1s;
+        }
+        .join-btn:hover {
+            background: #ce0000;
+            color: #fff;
+            transform: scale(1.04) rotate(-2deg);
+        }
+        footer {
+            text-align: center;
+            margin: 2.5rem 0 0;
+            color: #aaa;
+            letter-spacing: 2px;
+            font-size: 1.05rem;
+            border-top: 1px solid #222;
+            padding-top: 1.2rem;
+        }
+        .graffiti {
+            border-left: 8px solid #ce0000;
+            padding-left: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .contacts-section {
+            background: rgba(30,30,30,0.95);
+            border-radius: 10px;
+            margin: 2rem 0 0 0;
+            padding: 1.5rem 1.2rem;
+            box-shadow: 0 2px 12px #0008;
+            border-left: 4px solid #ce0000;
+        }
+        .contacts-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.2rem;
+            margin-top: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            background: #181818;
+            border: 2px solid #ce0000;
+            color: #fff;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            border-radius: 8px;
+            padding: 0.7rem 1.6rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s, border-color 0.18s, transform 0.1s;
+            box-shadow: 0 2px 8px #0006;
+            cursor: pointer;
+            position: relative;
+        }
+        .contact-btn:hover {
+            background: #ce0000;
+            color: #fff;
+            border-color: #fff;
+            transform: scale(1.045) rotate(-2deg);
+        }
+        .contact-btn .icon {
+            margin-right: 1rem;
+            font-size: 1.5em;
+            display: flex;
+            align-items: center;
+        }
+        .contact-btn.discord .icon {
+            margin-right: 0.8rem;
+        }
+        @media (max-width:600px) {
+            .container { padding: 1rem 0.4rem;}
+            nav a { margin: 0 0.55rem; font-size: 1rem;}
+            h1 { font-size: 2.1rem; }
+            .contacts-btns { flex-direction: column; gap: 0.7rem;}
+            .goth-cross-big { width: 60px; height: 80px; }
+        }
+        .about-section {
+            background: rgba(0,0,0,0.88);
+            border-left: 6px solid #ce0000;
+            margin: 2rem 0 2.5rem 0;
+            padding: 1.2rem 1.3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #0006;
+        }
+        .about-text {
+            font-size: 1.6rem;
+            font-family: 'Permanent Marker', cursive, monospace;
+            color: #fff;
+            text-shadow: 0 1px 5px #000, 0 0 2px #fff3;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Готический крест слева -->
+        <svg class="goth-cross left" viewBox="0 0 48 64" fill="none">
+            <path d="M24 2 v60 M2 32 h44" stroke="white" stroke-width="6" stroke-linecap="round"/>
+            <path d="M24 2 q4 8 8 0" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M24 2 q-4 8 -8 0" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M2 32 q8 4 0 8" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M46 32 q-8 4 0 8" stroke="white" stroke-width="3" fill="none"/>
+        </svg>
+        <!-- Готический крест справа -->
+        <svg class="goth-cross right" viewBox="0 0 48 64" fill="none">
+            <path d="M24 2 v60 M2 32 h44" stroke="white" stroke-width="6" stroke-linecap="round"/>
+            <path d="M24 2 q4 8 8 0" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M24 2 q-4 8 -8 0" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M2 32 q8 4 0 8" stroke="white" stroke-width="3" fill="none"/>
+            <path d="M46 32 q-8 4 0 8" stroke="white" stroke-width="3" fill="none"/>
+        </svg>
+        <h1>DAMIAN</h1>
+        <nav>
+            <a href="#" class="active">Главная</a>
+            <a href="#about">О нас</a>
+            <a href="#">Состав</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="handwritten">ГРУППИРОВКА DAMIAN</h2>
+        <div class="graffiti">
+            <p>
+                <b>DAMIAN</b> — это не просто команда на Radmir GTA 5 RP. Это тёмная улица, это своя стая. Мы не играем по чужим правилам — мы создаём свои.<br>
+                Здесь каждый <span class="handwritten" style="color:#ce0000;">свой</span>. Здесь не спрашивают "почему?", а делают.
+            </p>
+        </div>
+        <div class="about-section" id="about">
+            <span class="about-text">мы просто пиздата Охуевшие</span>
+        </div>
+        <!-- Готический большой крест (центральный) -->
+        <svg class="goth-cross-big" viewBox="0 0 110 140" fill="none">
+            <path d="M55 10 v120 M10 70 h90" stroke="white" stroke-width="12" stroke-linecap="round"/>
+            <path d="M55 10 q9 18 18 0" stroke="white" stroke-width="6" fill="none"/>
+            <path d="M55 10 q-9 18 -18 0" stroke="white" stroke-width="6" fill="none"/>
+            <path d="M10 70 q18 9 0 18" stroke="white" stroke-width="6" fill="none"/>
+            <path d="M100 70 q-18 9 0 18" stroke="white" stroke-width="6" fill="none"/>
+        </svg>
+        <h2>Хочешь к нам?</h2>
+        <p>
+            Покажи, что ты не из стада. Присоединяйся к <span class="handwritten">DAMIAN</span> — и стань частью легенды!
+        </p>
+        <a href="#contacts" class="join-btn">Вступить</a>
+
+        <div class="contacts-section" id="contacts">
+            <h2 style="color:#fff; margin-bottom:0.7rem;">Контакты</h2>
+            <div class="contacts-btns">
+                <a class="contact-btn" href="https://t.me/dam1anSotka" target="_blank">
+                    <span class="icon">
+                        <!-- Telegram SVG -->
+                        <svg width="24" height="24" fill="none"><path d="M22 4L11 20l-4-7 15-9z" fill="#ce0000"/><path d="M2 12l7 1 2 7 4-13 7-3-20 8z" fill="#fff" stroke="#ce0000" stroke-width="2" stroke-linejoin="round"/></svg>
+                    </span>
+                    @dam1anSotka
+                </a>
+                <a class="contact-btn" href="https://t.me/DamianSotka1" target="_blank">
+                    <span class="icon">
+                        <svg width="24" height="24" fill="none"><path d="M22 4L11 20l-4-7 15-9z" fill="#ce0000"/><path d="M2 12l7 1 2 7 4-13 7-3-20 8z" fill="#fff" stroke="#ce0000" stroke-width="2" stroke-linejoin="round"/></svg>
+                    </span>
+                    @DamianSotka1
+                </a>
+                <a class="contact-btn discord" href="https://discord.gg/NfWsGdyB" target="_blank">
+                    <span class="icon">
+                        <!-- Discord SVG -->
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#ce0000" d="M22 24l-1.9-5.3c1.2-1.1 1.9-2.4 1.9-3.7V3.9C22 1.7 19.3 0 16.3 0H3.7C.7 0-2 1.7-2 3.9v11.1c0 1.3.7 2.6 1.9 3.7L0 24l6.2-3h8.7L22 24zm-8.8-5.3c-2.4 0-4.8-.5-7.2-1.5.2-.4.5-.7.7-1.1 2.2 1 4.5 1.5 6.9 1.5s4.7-.5 6.9-1.5c.2.4.5.7.7 1.1-2.4 1-4.8 1.5-7.2 1.5zm-5.7-7.3c0 .7.6 1.3 1.3 1.3s1.3-.6 1.3-1.3-.6-1.3-1.3-1.3-1.3.6-1.3 1.3zm7.2 1.3c.7 0 1.3-.6 1.3-1.3s-.6-1.3-1.3-1.3-1.3.6-1.3 1.3.6 1.3 1.3 1.3zm2.1-2.1c-.7-.4-1.4-.7-2.2-1-.1 0-.2-.1-.3-.1-.2.1-.4.2-.7.2s-.5-.1-.7-.2c-.1 0-.2.1-.3.1-.8.3-1.6.6-2.2 1-.5.3-.9.8-1 1.3-.2.8-.3 1.7-.3 2.6 0 .3.2.6.5.7.4.1.9.2 1.4.2.5 0 1-.1 1.4-.2.3-.1.5-.4.5-.7 0-.9-.1-1.8-.3-2.6-.1-.5-.5-1-1-1.3z"/></svg>
+                    </span>
+                    discord.gg/NfWsGdyB
+                </a>
+            </div>
+            <p style="font-size:1rem;color:#ce0000;margin-top:1.2rem;" class="handwritten">Пиши в ТГ или заходи на дискорд — найдем общий язык!</p>
+        </div>
+    </div>
+    <footer>
+        © 2025 DAMIAN | Radmir GTA 5 RP. Сайт в стиле улиц.
+    </footer>
+</body>
+</html>
