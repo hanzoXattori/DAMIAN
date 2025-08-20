@@ -7,19 +7,53 @@
     <!-- Шрифты для неформального и рукописного стиля -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #121212;
+            --bg2: #181818;
+            --fg: #f3f3f3;
+            --fg2: #fff;
+            --accent: #ce0000;
+            --border: #fff2;
+            --shadow: #000b;
+            --card-bg: rgba(18,18,18,0.97);
+            --card-border: #fff2;
+            --graffiti-border: #ce0000;
+            --button-bg: #fff;
+            --button-fg: #111;
+            --button-hover-bg: #ce0000;
+            --button-hover-fg: #fff;
+        }
+        body[data-theme="light"] {
+            --bg: #f7f7f7;
+            --bg2: #fff;
+            --fg: #121212;
+            --fg2: #111;
+            --accent: #ce0000;
+            --border: #ce000044;
+            --shadow: #0001;
+            --card-bg: #fff;
+            --card-border: #ce000022;
+            --graffiti-border: #ce0000;
+            --button-bg: #ce0000;
+            --button-fg: #fff;
+            --button-hover-bg: #121212;
+            --button-hover-fg: #fff;
+        }
         body {
-            background: #121212;
-            color: #f3f3f3;
+            background: var(--bg);
+            color: var(--fg);
             margin: 0;
             font-family: 'VT323', monospace, Arial, sans-serif;
             min-height: 100vh;
+            transition: background 0.25s, color 0.25s;
         }
         header {
             position: relative;
             text-align: center;
-            background: #181818;
+            background: var(--bg2);
             padding: 2rem 0 1rem 0;
-            border-bottom: 3px solid #fff;
+            border-bottom: 3px solid var(--fg2);
+            transition: background 0.25s, border-color 0.25s;
         }
         .goth-cross {
             position: absolute;
@@ -33,17 +67,18 @@
             font-family: 'Permanent Marker', cursive, monospace;
             font-size: 3.5rem;
             letter-spacing: 10px;
-            color: #fff;
-            text-shadow: 0 2px 6px #000, 0 0 1px #fff;
+            color: var(--fg2);
+            text-shadow: 0 2px 6px #000, 0 0 1px var(--fg2);
             margin: 0 0 0.5rem 0;
             text-transform: uppercase;
             user-select: none;
+            transition: color 0.25s;
         }
         nav {
             margin-top: 0.6rem;
         }
         nav a {
-            color: #fff;
+            color: var(--fg2);
             margin: 0 1.3rem;
             font-size: 1.1rem;
             letter-spacing: 2px;
@@ -54,26 +89,50 @@
             transition: border-color 0.15s, color 0.15s;
         }
         nav a:hover, nav a.active {
-            border-bottom: 2px solid #fff;
-            color: #ce0000;
+            border-bottom: 2px solid var(--fg2);
+            color: var(--accent);
+        }
+        .theme-switcher {
+            position: absolute;
+            right: 2vw;
+            top: 2.2rem;
+            z-index: 10;
+            cursor: pointer;
+            background: var(--card-bg);
+            color: var(--fg2);
+            border: 2px solid var(--accent);
+            border-radius: 100px;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            padding: 0.35rem 1.1rem 0.35rem 1.1rem;
+            transition: background 0.18s,color 0.18s,border-color 0.18s;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        .theme-switcher:hover {
+            background: var(--accent);
+            color: var(--fg2);
+            border-color: var(--fg2);
         }
         .container {
             max-width: 900px;
             margin: 2rem auto;
-            background: rgba(18,18,18,0.97);
+            background: var(--card-bg);
             border-radius: 12px;
             padding: 2.2rem 1.5rem;
-            box-shadow: 0 2px 32px #000b;
-            border: 2px dashed #fff2;
+            box-shadow: 0 2px 32px var(--shadow);
+            border: 2px dashed var(--card-border);
             position: relative;
+            transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
         }
         h2 {
             font-family: 'Permanent Marker', cursive, monospace;
             font-size: 2.1rem;
             text-transform: uppercase;
-            color: #ce0000;
+            color: var(--accent);
             margin-top: 0;
             margin-bottom: 1.2rem;
+            transition: color 0.25s;
         }
         .handwritten {
             font-family: 'Permanent Marker', cursive;
@@ -93,8 +152,8 @@
         }
         .join-btn {
             display: inline-block;
-            background: #fff;
-            color: #111;
+            background: var(--button-bg);
+            color: var(--button-fg);
             font-family: 'Permanent Marker', cursive;
             font-size: 1.2rem;
             letter-spacing: 2px;
@@ -102,14 +161,42 @@
             border-radius: 5px;
             padding: 0.7rem 2.2rem;
             margin: 2rem 0;
-            box-shadow: 0 2px 7px #000a;
+            box-shadow: 0 2px 7px var(--shadow);
             cursor: pointer;
             transition: background 0.2s, color 0.2s, transform 0.1s;
+            text-decoration: none;
         }
         .join-btn:hover {
-            background: #ce0000;
-            color: #fff;
+            background: var(--button-hover-bg);
+            color: var(--button-hover-fg);
             transform: scale(1.04) rotate(-2deg);
+        }
+        .to-top-btn {
+            position: fixed;
+            right: 25px;
+            bottom: 30px;
+            z-index: 9999;
+            background: var(--accent);
+            color: var(--fg2);
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            box-shadow: 0 4px 20px var(--shadow);
+            cursor: pointer;
+            font-size: 2rem;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .to-top-btn.show {
+            display: flex;
+        }
+        .to-top-btn:hover {
+            background: var(--fg2);
+            color: var(--accent);
+            box-shadow: 0 8px 32px var(--shadow);
         }
         footer {
             text-align: center;
@@ -119,19 +206,22 @@
             font-size: 1.05rem;
             border-top: 1px solid #222;
             padding-top: 1.2rem;
+            background: transparent;
+            transition: background 0.25s, color 0.25s;
         }
         .graffiti {
-            border-left: 8px solid #ce0000;
+            border-left: 8px solid var(--graffiti-border);
             padding-left: 1.1rem;
             margin-bottom: 2rem;
         }
         .contacts-section {
-            background: rgba(30,30,30,0.95);
+            background: var(--bg2);
             border-radius: 10px;
             margin: 2rem 0 0 0;
             padding: 1.5rem 1.2rem;
-            box-shadow: 0 2px 12px #0008;
-            border-left: 4px solid #ce0000;
+            box-shadow: 0 2px 12px var(--shadow);
+            border-left: 4px solid var(--accent);
+            transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
         }
         .contacts-btns {
             display: flex;
@@ -143,9 +233,9 @@
         .contact-btn {
             display: flex;
             align-items: center;
-            background: #181818;
-            border: 2px solid #ce0000;
-            color: #fff;
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            color: var(--fg2);
             font-family: 'Permanent Marker', cursive;
             font-size: 1.1rem;
             letter-spacing: 1.5px;
@@ -153,14 +243,14 @@
             padding: 0.7rem 1.6rem;
             text-decoration: none;
             transition: background 0.2s, color 0.2s, border-color 0.18s, transform 0.1s;
-            box-shadow: 0 2px 8px #0006;
+            box-shadow: 0 2px 8px var(--shadow);
             cursor: pointer;
             position: relative;
         }
         .contact-btn:hover {
-            background: #ce0000;
-            color: #fff;
-            border-color: #fff;
+            background: var(--accent);
+            color: var(--fg2);
+            border-color: var(--fg2);
             transform: scale(1.045) rotate(-2deg);
         }
         .contact-btn .icon {
@@ -178,19 +268,23 @@
             h1 { font-size: 2.1rem; }
             .contacts-btns { flex-direction: column; gap: 0.7rem;}
             .goth-cross-big { width: 60px; height: 80px; }
+            .theme-switcher { right: 1vw; top: 1.2rem; font-size: 1rem; padding: 0.2rem 0.8rem;}
         }
         .about-section {
             background: rgba(0,0,0,0.88);
-            border-left: 6px solid #ce0000;
+            border-left: 6px solid var(--accent);
             margin: 2rem 0 2.5rem 0;
             padding: 1.2rem 1.3rem;
             border-radius: 10px;
-            box-shadow: 0 2px 8px #0006;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        body[data-theme="light"] .about-section {
+            background: #f2f2f2;
         }
         .about-text {
             font-size: 1.6rem;
             font-family: 'Permanent Marker', cursive, monospace;
-            color: #fff;
+            color: var(--fg2);
             text-shadow: 0 1px 5px #000, 0 0 2px #fff3;
             letter-spacing: 2px;
         }
@@ -198,6 +292,8 @@
 </head>
 <body>
     <header>
+        <!-- Тема -->
+        <button class="theme-switcher" id="themeSwitcher" title="Сменить тему">🌞/🌚</button>
         <!-- Готический крест слева -->
         <svg class="goth-cross left" viewBox="0 0 48 64" fill="none">
             <path d="M24 2 v60 M2 32 h44" stroke="white" stroke-width="6" stroke-linecap="round"/>
@@ -245,10 +341,10 @@
         <p>
             Покажи, что ты не из стада. Присоединяйся к <span class="handwritten">DAMIAN</span> — и стань частью легенды!
         </p>
-        <a href="#contacts" class="join-btn">Вступить</a>
+        <a href="https://discord.gg/NfWsGdyB" class="join-btn" target="_blank">Вступить</a>
 
         <div class="contacts-section" id="contacts">
-            <h2 style="color:#fff; margin-bottom:0.7rem;">Контакты</h2>
+            <h2 style="color:var(--fg2); margin-bottom:0.7rem;">Контакты</h2>
             <div class="contacts-btns">
                 <a class="contact-btn" href="https://t.me/dam1anSotka" target="_blank">
                     <span class="icon">
@@ -271,11 +367,43 @@
                     discord.gg/NfWsGdyB
                 </a>
             </div>
-            <p style="font-size:1rem;color:#ce0000;margin-top:1.2rem;" class="handwritten">Пиши в ТГ или заходи на дискорд — найдем общий язык!</p>
+            <p style="font-size:1rem;color:var(--accent);margin-top:1.2rem;" class="handwritten">Пиши в ТГ или заходи на дискорд — найдем общий язык!</p>
         </div>
     </div>
+    <button class="to-top-btn" id="toTopBtn" title="Наверх">&#8679;</button>
     <footer>
         © 2025 DAMIAN | Radmir GTA 5 RP. Сайт в стиле улиц.
     </footer>
+    <script>
+        // Theme switcher
+        const themeSwitcher = document.getElementById('themeSwitcher');
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('damian-theme', theme);
+            themeSwitcher.textContent = theme === 'light' ? '🌞' : '🌚';
+        }
+        themeSwitcher.onclick = function() {
+            const cur = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            setTheme(cur);
+        };
+        (() => {
+            let th = localStorage.getItem('damian-theme');
+            if (!th) th = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            setTheme(th);
+        })();
+
+        // To top button
+        const toTopBtn = document.getElementById('toTopBtn');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 250) {
+                toTopBtn.classList.add('show');
+            } else {
+                toTopBtn.classList.remove('show');
+            }
+        });
+        toTopBtn.onclick = function() {
+            window.scrollTo({top:0, behavior:'smooth'});
+        };
+    </script>
 </body>
 </html>
